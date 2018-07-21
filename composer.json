@@ -1,0 +1,9 @@
+{
+    "require": {
+        "phalcon/incubator": "^3.4",
+        "phpunit/phpunit": "^5.0",
+        "robmorgan/phinx": "^0.10.0"
+    },
+	"require-dev": {
+    }
+}
