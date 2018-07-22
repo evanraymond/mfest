@@ -62,9 +62,9 @@ $app = new Phalcon\Mvc\Micro($di);
 require __DIR__ . "/routes.php";
 
 $app->notFound(function () use ($app) {
-	$app->response->setStatusCode(404, "Not Found")->setContentType("application/json")->sendHeaders();
+	$app->response->setStatusCode(404, "Not Found")->sendHeaders();
 
-	print 2; exit;
+	echo $app->view->render('errors/404/index', []);
 });
 
 $app->handle();
