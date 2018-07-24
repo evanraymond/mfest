@@ -45,8 +45,6 @@
             width: 100%;
             height: 100px;
 
-            background-color: #323439;
-
             color: #246bbf;
         }
 
@@ -62,16 +60,19 @@
         }
 
         header .logo {
+            margin-left: 10px;
             font-size: 2.6em;
         }
 
         header a {
+            letter-spacing: .1em;
             color: #f1f1f1;
             text-decoration: none;
         }
 
         header ul {
             margin: 0;
+            margin-right: 10px;
         }
 
         header ul li {
@@ -93,7 +94,7 @@
         }
 
         #content {
-            margin: 80px auto;
+            margin: 100px auto 30px;
             max-width: 1200px;
 
             background-color: #000;
@@ -104,9 +105,10 @@
         }
 
         section {
+            position: relative;
             overflow: auto;
             box-sizing: border-box;
-            padding: 60px 0;
+            padding: 0;
         }
 
         .container {
@@ -139,9 +141,7 @@
         }
 
         footer {
-            padding-top: 120px;
-
-            background-color: #323439;
+            padding: 60px 0 10px;
 
             text-align: center;
             font-size: 12px;
@@ -251,6 +251,34 @@
             width: 200px;
         }
 
+        .options {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+
+            text-align: right;
+        }
+
+        .options select {
+            margin-left: 2px;
+            padding: 6px 8px;
+            background-color: #000;
+            border: 1px solid #484848;
+
+            color: #dedede;
+        }
+
+        h1 {
+            margin: 0;
+            padding-left: 10px;
+
+            font-size: 2.2em;
+            line-height: 2.2em;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: .25em;
+        }
+
     </style>
 </head>
 
@@ -278,5 +306,22 @@
 <footer>
     <p>(c) 2018 mFEST.app</p>
 </footer>
+
+<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+<script>
+    $( document ).ready(function() {
+        $('#select-state').change(function() {
+            if ($(this).val() == 'All') {
+                $('.fest').show();
+            } else {
+                $('.fest').hide();
+                $('*[data-state="' + $(this).val() + '"]').show();
+
+            }
+        });
+    });
+</script>
+
 </body>
 </html>

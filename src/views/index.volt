@@ -4,16 +4,18 @@
     <section id="fests">
         <div class="options">
             State:
-            <select>
-                <option>CA</option>
-                <option>MD</option>
-                <option>MI</option>
-                <option>PA</option>
+            <select id="select-state">
+                <option>All</option>
+                {% for state, count in states %}
+                    <option value="{{ state }}">{{ state }} ({{ count }})</option>
+                {% endfor %}
             </select>
         </div>
 
+        <h1>Fests</h1>
+
         {% for fest in fests %}
-            <div class="fest">
+            <div class="fest" data-state="{{ fest['state'] }}">
                 <a href="{{ url }}fest/{{ fest['slug'] }}"><img src="{{ cdn }}fests/{{ fest['logo'] }}" /></a>
 
                 <h2><a href="{{ url }}fest/{{ fest['slug'] }}">{{ fest['name'] }}</a></h2>

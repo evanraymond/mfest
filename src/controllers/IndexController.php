@@ -12,9 +12,19 @@ class IndexController extends ControllerBase
 			'order' => 'start_date ASC'
 		]);
 
+		$states = [];
+		foreach ($Fests as $Fest) {
+			if (isset($states[$Fest->state]))
+				$states[$Fest->state]++;
+			else
+				$states[$Fest->state] = 1;
+		}
+		ksort($states);
+
 		echo $this->view->render('index', [
 			'url' => $this->config->app->method . $this->config->app->public,
 			'cdn' => $this->config->cdn,
+			'states' => $states,
 			'fests' => $Fests->toArray()
 		]);
     }
@@ -41,8 +51,6 @@ class IndexController extends ControllerBase
 					'name' => $FestVenue->Venue->name,
 					'schedule' => []
 				];
-
-				//print_r($FestVenue->FestVenueBands); exit;
 
 				$FestVenueBands = FestVenueBandModel::find([
 					'conditions' => 'fest_venue_id = :fest_venue_id:',
